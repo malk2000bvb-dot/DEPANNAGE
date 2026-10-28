@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Œœ„… «·œÌ»«‰«Ã - œÌ»«‰Ê—</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .driver-btn {
+            background-color: #ff9800; /* ·Ê‰ Œ«’ »«·“»Ê‰ «·”«∆ﬁ */
+        }
+        .driver-btn:hover {
+            background-color: #e68900;
+        }
+        .tow-btn {
+            background-color: #2196F3; /* ·Ê‰ Œ«’ »«·œÌ»«‰Ê— */
+        }
+        .tow-btn:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>„—Õ»« »ﬂ ›Ì „‰’… «·œÌ»«‰«Ã «·”—Ì⁄</h2>
+        <p>«Œ — ‰Ê⁄ «·Õ”«» √Ê «·Œœ„… ··»œ¡:</p>
+
+        <!-- “— Œ«’ »«·“»Ê‰ («·”«∆ﬁ «··Ì  ⁄ÿ·  ”Ì«— Â) -->
+        <a href="#" class="btn driver-btn">√‰« ”«∆ﬁ (√Õ «Ã „”«⁄œ… / œÌ»«‰Ê—)</a>
+
+        <!-- “— Œ«’ »«·œÌ»«‰Ê— (’«Õ» «·‘«Õ‰… «··Ì Ì—›œ) -->
+        <a href="#" class="btn tow-btn">√‰« œÌ»«‰Ê— (√—Ìœ «” ﬁ»«· «·ÿ·»« )</a>
+    </div>
+
+</body>
+</html>
