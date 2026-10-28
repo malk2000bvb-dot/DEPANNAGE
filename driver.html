@@ -66,7 +66,7 @@
 
     <div class="container">
         <h2>طلب مساعدة (ديباناج)</h2>
-        <form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح! جاري البحث عن أقرب ديبانور...');">
+        <form id="driverForm">
             
             <label for="name">الاسم الكامل:</label>
             <input type="text" id="name" required placeholder="أدخل اسمك هنا">
@@ -76,10 +76,10 @@
 
             <label for="car-type">نوع العطب:</label>
             <select id="car-type">
-                <option value="battery">مشكل في البطارية</option>
-                <option value="tire">عطب في العجلة (پريڤ)</option>
-                <option value="engine">عطب في المحرك / توقف مفاجئ</option>
-                <option value="accident">حادث مروري / اصطدام</option>
+                <option value="مشكل في البطارية">مشكل في البطارية</option>
+                <option value="عطب في العجلة (پريڤ)">عطب في العجلة (پريڤ)</option>
+                <option value="عطب في المحرك / توقف مفاجئ">عطب في المحرك / توقف مفاجئ</option>
+                <option value="حادث مروري / اصطدام">حادث مروري / اصطدام</option>
             </select>
 
             <label for="location">مكانك الحالي (الولاية / الحي):</label>
@@ -91,5 +91,31 @@
         <a href="index.html" class="back-link">← العودة للرئيسية</a>
     </div>
 
+    <script>
+        document.getElementById('driverForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // جلب القيم اللي كتبها السائق
+            const order = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                carType: document.getElementById('car-type').value,
+                location: document.getElementById('location').value,
+                time: new Date().toLocaleTimeString()
+            };
+
+            // جلب الطلبات السابقة أو إنشاء قائمة جديدة
+            let orders = JSON.parse(localStorage.getItem('depannage_orders')) || [];
+            orders.push(order);
+
+            // حفظ الطلبات في ذاكرة المتصفح
+            localStorage.setItem('depannage_orders', JSON.stringify(orders));
+
+            alert('تم إرسال طلبك بنجاح! سيظهر الآن عند أقرب ديبانور.');
+            
+            // إعادة توجيه السائق للصفحة الرئيسية أو تفريغ النموذج
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
