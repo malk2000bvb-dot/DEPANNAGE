@@ -42,7 +42,7 @@
             width: 100%;
             padding: 15px;
             margin-top: 25px;
-            background-color: #ff9800;
+            background-color: #25D366; /* لون الواتساب الأخضر */
             color: white;
             border: none;
             font-size: 18px;
@@ -51,7 +51,7 @@
             cursor: pointer;
         }
         .btn:hover {
-            background-color: #e68900;
+            background-color: #1ebe5d;
         }
         .back-link {
             display: block;
@@ -65,8 +65,8 @@
 <body>
 
     <div class="container">
-        <h2>طلب مساعدة (ديباناج)</h2>
-        <form id="driverForm">
+        <h2>طلب مساعدة عبر الواتساب</h2>
+        <form id="whatsappForm">
             
             <label for="name">الاسم الكامل:</label>
             <input type="text" id="name" required placeholder="أدخل اسمك هنا">
@@ -85,36 +85,35 @@
             <label for="location">مكانك الحالي (الولاية / الحي):</label>
             <input type="text" id="location" required placeholder="مثال: الجزائر العاصمة - باب الزوار">
 
-            <button type="submit" class="btn">إرسال طلب النجدة</button>
+            <button type="submit" class="btn">إرسال الطلب عبر الواتساب 📱</button>
         </form>
 
         <a href="index.html" class="back-link">← العودة للرئيسية</a>
     </div>
 
     <script>
-        document.getElementById('driverForm').addEventListener('submit', function(e) {
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // جلب القيم اللي كتبها السائق
-            const order = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                carType: document.getElementById('car-type').value,
-                location: document.getElementById('location').value,
-                time: new Date().toLocaleTimeString()
-            };
+            // استخراج المعلومات لي كتبها السائق
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const carType = document.getElementById('car-type').value;
+            const location = document.getElementById('location').value;
 
-            // جلب الطلبات السابقة أو إنشاء قائمة جديدة
-            let orders = JSON.parse(localStorage.getItem('depannage_orders')) || [];
-            orders.push(order);
+            // رقم الهاتف لي راح يلحق ليه الطلب (استبدل هذا الرقم برقمك الشخصي مع رمز الدولة، مثال: 213550000000+)
+            const ownerPhone = "213550000000"; 
 
-            // حفظ الطلبات في ذاكرة المتصفح
-            localStorage.setItem('depannage_orders', JSON.stringify(orders));
+            // صياغة الرسالة
+            const message = سلام، عندي عطب في السيارة وأحتاج ديباناج:%0a +
+                            👤 الاسم: ${name}%0a +
+                            📞 الهاتف: ${phone}%0a +
+                            🔧 العطب: ${carType}%0a +
+                            📍 المكان: ${location};
 
-            alert('تم إرسال طلبك بنجاح! سيظهر الآن عند أقرب ديبانور.');
-            
-            // إعادة توجيه السائق للصفحة الرئيسية أو تفريغ النموذج
-            window.location.href = 'index.html';
+            // فتح تطبيق الواتساب أوتوماتيكياً بالرسالة الجاهزة
+            const whatsappURL = https://wa.me/${ownerPhone}?text=${message};
+            window.open(whatsappURL, '_blank');
         });
     </script>
 </body>
