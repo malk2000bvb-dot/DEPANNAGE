@@ -1,108 +1,15 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب ديبانور - السائق</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 500px;
-            margin: 30px auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #ff9800;
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #333;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 25px;
-            background-color: #25D366; /* لون الواتساب الأخضر */
-            color: white;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #1ebe5d;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: #666;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h2>طلب مساعدة عبر الواتساب</h2>
-        <form id="whatsappForm">
-            
-            <label for="name">الاسم الكامل:</label>
-            <input type="text" id="name" required placeholder="أدخل اسمك هنا">
-
-            <label for="phone">رقم الهاتف:</label>
-            <input type="tel" id="phone" required placeholder="مثال: 0550000000">
-
-            <label for="car-type">نوع العطب:</label>
-            <select id="car-type">
-                <option value="مشكل في البطارية">مشكل في البطارية</option>
-                <option value="عطب في العجلة (پريڤ)">عطب في العجلة (پريڤ)</option>
-                <option value="عطب في المحرك / توقف مفاجئ">عطب في المحرك / توقف مفاجئ</option>
-                <option value="حادث مروري / اصطدام">حادث مروري / اصطدام</option>
-            </select>
-
-            <label for="location">مكانك الحالي (الولاية / الحي):</label>
-            <input type="text" id="location" required placeholder="مثال: الجزائر العاصمة - باب الزوار">
-
-            <button type="submit" class="btn">إرسال الطلب عبر الواتساب 📱</button>
-        </form>
-
-        <a href="index.html" class="back-link">← العودة للرئيسية</a>
-    </div>
-
-    <script>
+<script>
         document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // استخراج المعلومات لي كتبها السائق
+            // استخراج المعلومات
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const carType = document.getElementById('car-type').value;
             const location = document.getElementById('location').value;
 
-            // رقم الهاتف لي راح يلحق ليه الطلب (استبدل هذا الرقم برقمك الشخصي مع رمز الدولة، مثال: 213550000000+)
-            const ownerPhone = "213776450190"; 
+            // رقم الهاتف تاعك (تأكد بلي راك حاطه برمز الجزائر بدون الصفر الأول، مثال: 21355xxxxxxx)
+            const ownerPhone = "213550000000"; 
 
             // صياغة الرسالة
             const message = سلام، عندي عطب في السيارة وأحتاج ديباناج:%0a +
@@ -111,10 +18,10 @@
                             🔧 العطب: ${carType}%0a +
                             📍 المكان: ${location};
 
-            // فتح تطبيق الواتساب أوتوماتيكياً بالرسالة الجاهزة
+            // رابط الواتساب المباشر
             const whatsappURL = https://wa.me/${ownerPhone}?text=${message};
-            window.open(whatsappURL, '_blank');
+
+            // التوجيه المباشر للصفحة (يمنع المشكل تاع المتصفح لي يحبس الـ Pop-up)
+            window.location.href = whatsappURL;
         });
     </script>
-</body>
-</html>
