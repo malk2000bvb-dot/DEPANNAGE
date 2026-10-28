@@ -40,8 +40,7 @@
             color: #fff;
             transition: 0.3s;
             box-sizing: border-box;
-            border: none;
-            cursor: pointer;
+            text-align: center;
         }
         .driver-btn {
             background-color: #ff9800;
@@ -63,11 +62,11 @@
         <h2>مرحباً بك في منصة الديباناج السريع</h2>
         <p>اختر نوع الحساب أو الخدمة للبدء:</p>
 
-        <!-- زر السائق -->
-        <button class="btn driver-btn" onclick="alert('مرحباً بك كزبون! قريباً سنفتح لك صفحة طلب الديباناج.')">أنا سائق (أحتاج مساعدة / ديبانور)</button>
+        <!-- زر السائق يدي لصفحة السائق -->
+        <a href="driver.html" class="btn driver-btn">أنا سائق (أحتاج مساعدة / ديبانور)</a>
 
-        <!-- زر الديبانور -->
-        <button class="btn tow-btn" onclick="alert('مرحباً بك يا ديبانور! قريباً سنفتح لك لوحة استقبال الطلبات.')">أنا ديبانور (أريد استقبال الطلبات)</button>
+        <!-- زر الديبانور يدي لصفحة الديبانور -->
+        <a href="tow.html" class="btn tow-btn">أنا ديبانور (أريد استقبال الطلبات)</a>
     </div>
 
 </body>
