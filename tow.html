@@ -55,6 +55,11 @@
         .accept-btn:hover {
             background-color: #45a049;
         }
+        .no-orders {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+        }
         .back-link {
             display: block;
             text-align: center;
@@ -68,28 +73,39 @@
 
     <div class="container">
         <h2>لوحة طلبات الديباناج الحية</h2>
-        <p style="text-align: center; color: #666;">الطلبات الواردة من الزبائن والسائقين قريبة منك:</p>
+        <p style="text-align: center; color: #666;">الطلبات الواردة من السائقين:</p>
 
-        <!-- طلب تجريبي أول -->
-        <div class="order-card">
-            <h3>طلب رقم #101</h3>
-            <p><strong>اسم السائق:</strong> محمد أمين</p>
-            <p><strong>نوع العطب:</strong> مشكل في البطارية</p>
-            <p><strong>المكان:</strong> الجزائر العاصمة - باب الزوار</p>
-            <button class="accept-btn" onclick="alert('تم قبول الطلب بنجاح! سيتم التواصل مع الزبون.')">قبول الطلب</button>
-        </div>
-
-        <!-- طلب تجريبي ثاني -->
-        <div class="order-card">
-            <h3>طلب رقم #102</h3>
-            <p><strong>اسم السائق:</strong> كريم</p>
-            <p><strong>نوع العطب:</strong> عطب في العجلة (پريڤ)</p>
-            <p><strong>المكان:</strong> الجزائر العاصمة - الحراش</p>
-            <button class="accept-btn" onclick="alert('تم قبول الطلب بنجاح! سيتم التواصل مع الزبون.')">قبول الطلب</button>
+        <div id="ordersList">
+            <!-- سيتم تعبئة الطلبات هنا أوتوماتيكياً -->
         </div>
 
         <a href="index.html" class="back-link">← العودة للرئيسية</a>
     </div>
 
+    <script>
+        const ordersList = document.getElementById('ordersList');
+        
+        // جلب الطلبات من ذاكرة المتصفح
+        let orders = JSON.parse(localStorage.getItem('depannage_orders')) || [];
+
+        if (orders.length === 0) {
+            ordersList.innerHTML = '<div class="no-orders">لا توجد طلبات جديدة حالياً.</div>';
+        } else {
+            ordersList.innerHTML = '';
+            orders.forEach((order, index) => {
+                ordersList.innerHTML += 
+                    <div class="order-card">
+                        <h3>طلب رقم #${index + 1}</h3>
+                        <p><strong>اسم السائق:</strong> ${order.name}</p>
+                        <p><strong>رقم الهاتف:</strong> ${order.phone}</p>
+                        <p><strong>نوع العطب:</strong> ${order.carType}</p>
+                        <p><strong>المكان:</strong> ${order.location}</p>
+                        <p><strong>وقت الطلب:</strong> ${order.time}</p>
+                        <button class="accept-btn" onclick="alert('تم قبول طلب السائق ${order.name} بنجاح!')">قبول الطلب</button>
+                    </div>
+                ;
+            });
+        }
+    </script>
 </body>
 </html>
