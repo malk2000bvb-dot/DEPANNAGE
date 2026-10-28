@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الديبانور - استقبال الطلبات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2196F3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .order-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .order-card p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .accept-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .accept-btn:hover {
+            background-color: #45a049;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>لوحة طلبات الديباناج الحية</h2>
+        <p style="text-align: center; color: #666;">الطلبات الواردة من الزبائن والسائقين قريبة منك:</p>
+
+        <!-- طلب تجريبي أول -->
+        <div class="order-card">
+            <h3>طلب رقم #101</h3>
+            <p><strong>اسم السائق:</strong> محمد أمين</p>
+            <p><strong>نوع العطب:</strong> مشكل في البطارية</p>
+            <p><strong>المكان:</strong> الجزائر العاصمة - باب الزوار</p>
+            <button class="accept-btn" onclick="alert('تم قبول الطلب بنجاح! سيتم التواصل مع الزبون.')">قبول الطلب</button>
+        </div>
+
+        <!-- طلب تجريبي ثاني -->
+        <div class="order-card">
+            <h3>طلب رقم #102</h3>
+            <p><strong>اسم السائق:</strong> كريم</p>
+            <p><strong>نوع العطب:</strong> عطب في العجلة (پريڤ)</p>
+            <p><strong>المكان:</strong> الجزائر العاصمة - الحراش</p>
+            <button class="accept-btn" onclick="alert('تم قبول الطلب بنجاح! سيتم التواصل مع الزبون.')">قبول الطلب</button>
+        </div>
+
+        <a href="index.html" class="back-link">← العودة للرئيسية</a>
+    </div>
+
+</body>
+</html>
